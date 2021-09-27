@@ -13,15 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Teste;
-import model.Teste2;
 
 /**
  *
  * @author MarcosMG
  */
-@WebServlet(name = "cadTeste2", urlPatterns = {"/cadTeste2"})
-public class cadTeste2 extends HttpServlet {
+@WebServlet(name = "deleta", urlPatterns = {"/deleta"})
+public class deleta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,27 +36,20 @@ public class cadTeste2 extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
-            Teste2 cada2 = new Teste2();
-
-            cada2.setNumero(Integer.parseInt(request.getParameter("numero2")));
-            cada2.setCoisa(request.getParameter("nome2"));
-            cada2.setCor(request.getParameter("cor2"));
-
             Conexao conecta = new Conexao();
-            conecta.cadTeste2(cada2);
-            
-            int numero = Integer.parseInt(request.getParameter("numero"));
+
+            int numero = Integer.parseInt(request.getParameter("num"));
             conecta.deletaTeste(numero);
-            
+
             response.sendRedirect("teste2.jsp");
 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet cadTeste2</title>");
+            out.println("<title>Servlet deleta</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet cadTeste2 at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet deleta at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

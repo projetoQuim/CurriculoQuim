@@ -29,6 +29,7 @@
                         <th scope="col">Número</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Cor</th>
+                        <th scope="col">Deleta</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,7 @@
                         <td><%=resu.getInt("numero")%></td>
                         <td><%=resu.getString("coisa")%></td>
                         <td><%=resu.getString("cor")%></td>
+                        <td><a href="deleta?num=<%=resu.getInt("numero")%>">Deleta</a></td>
                         </tr>
                     <%}%>
                 </tbody>

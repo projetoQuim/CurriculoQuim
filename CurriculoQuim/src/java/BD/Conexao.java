@@ -85,4 +85,16 @@ public class Conexao {
         return rs;
     }
 
+    public void deletaTeste(int id) {
+        try {
+            ps = conexao.prepareStatement("delete from teste where numero=?");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            
+        } catch (SQLException sqle) {
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, sqle);
+
+        }
+    }
+
 }
