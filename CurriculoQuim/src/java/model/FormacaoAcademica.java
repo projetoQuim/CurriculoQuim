@@ -12,22 +12,12 @@ package model;
 public class FormacaoAcademica {
 
     private int idformacaoacademica;
-    private int Codigo;
+    private int codigoCurriculo;
     private String Escolaridade;
     private String AreaFormacao;
     private String InstituicaoEnsino;
     private String Curso;
 
-    public FormacaoAcademica(int Codigo, String Escolaridade, String AreaFormacao, String InstituicaoEnsino, String Curso) {
-        this.Codigo = Codigo;
-        this.Escolaridade = Escolaridade;
-        this.AreaFormacao = AreaFormacao;
-        this.InstituicaoEnsino = InstituicaoEnsino;
-    }
-    
-    public FormacaoAcademica() {
-    }
-    
     public int getIdformacaoacademica() {
         return idformacaoacademica;
     }
@@ -36,12 +26,12 @@ public class FormacaoAcademica {
         this.idformacaoacademica = idformacaoacademica;
     }
 
-    public int getCodigo() {
-        return Codigo;
+    public int getCodigoCurriculo() {
+        return codigoCurriculo;
     }
 
-    public void setCodigo(int Codigo) {
-        this.Codigo = Codigo;
+    public void setCodigoCurriculo(int codigoCurriculo) {
+        this.codigoCurriculo = codigoCurriculo;
     }
 
     public String getEscolaridade() {
@@ -76,4 +66,8 @@ public class FormacaoAcademica {
         this.Curso = Curso;
     }
 
+    public FormacaoAcademica() {
+    }
+
+    
 }

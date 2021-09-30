@@ -47,9 +47,6 @@ public class cadTeste2 extends HttpServlet {
             Conexao conecta = new Conexao();
             conecta.cadTeste2(cada2);
             
-            int numero = Integer.parseInt(request.getParameter("numero"));
-            conecta.deletaTeste(numero);
-            
             response.sendRedirect("teste2.jsp");
 
             out.println("<!DOCTYPE html>");

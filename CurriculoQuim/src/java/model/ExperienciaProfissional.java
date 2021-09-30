@@ -12,21 +12,12 @@ package model;
 public class ExperienciaProfissional {
 
     private int idexperienciaprofissional;
-    private int Codigo;
+    private int codigoCurriculo;
     private String NomeEmpresa;
     private String Ramo;
     private String Cargo;
     private String DataAdmissao;
     private String DataDemissao;
-
-    public ExperienciaProfissional(int Codigo, String NomeEmpresa, String Ramo, String Cargo, String DataAdmissao, String DataDemissao) {
-        this.Codigo = Codigo;
-        this.NomeEmpresa = NomeEmpresa;
-        this.Ramo = Ramo;
-        this.Cargo = Cargo;
-        this.DataAdmissao = DataAdmissao;
-        this.DataDemissao = DataDemissao;
-    }
 
     public int getIdexperienciaprofissional() {
         return idexperienciaprofissional;
@@ -36,12 +27,12 @@ public class ExperienciaProfissional {
         this.idexperienciaprofissional = idexperienciaprofissional;
     }
 
-    public int getCodigo() {
-        return Codigo;
+    public int getCodigoCurriculo() {
+        return codigoCurriculo;
     }
 
-    public void setCodigo(int Codigo) {
-        this.Codigo = Codigo;
+    public void setCodigoCurriculo(int codigoCurriculo) {
+        this.codigoCurriculo = codigoCurriculo;
     }
 
     public String getNomeEmpresa() {
@@ -84,4 +75,8 @@ public class ExperienciaProfissional {
         this.DataDemissao = DataDemissao;
     }
 
+    public ExperienciaProfissional() {
+    }
+
+    
 }
