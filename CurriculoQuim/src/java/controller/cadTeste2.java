@@ -77,23 +77,7 @@ out.println("<!DOCTYPE html>");
             request.setAttribute("listagem", listaFormacao);
             response.sendRedirect("FormacaoAcademica.jsp");
 
-//            ArrayList<String> agenda = new ArrayList();
-//
-//            // [ B ] usando o método add() para gravar 4 contatos na agenda
-//            agenda.add("Juca Bala;11 1111-1111");
-//            agenda.add("Marcos Paqueta;22 2222-2222");
-//            agenda.add("Maria Antonieta;33 3333-3333");
-//            agenda.add("Antônio Conselheiro;44 4444-4444");
-//
-//            int i;
-//
-//            // [ C ] mostrando os "n" contatos da agenda (usando o índice)
-//            // número de elementos da agenda: método size()
-//            out.println("Percorrendo o ArrayList (usando o índice)\n");
-//            int n = agenda.size();
-//            for (i = 0; i < n; i++) {
-//                out.println("Posição %d- %s\n" + i + "" + agenda.get(i));
-//            }
+
             out.println("</body>");
             out.println("</html>");
         }
