@@ -178,9 +178,9 @@
 
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-formacadem-tab" data-toggle="tab" href="#nav-formacadem" role="tab" aria-controls="nav-formacadem" aria-selected="true">Formação Acadêmica</a>
-                        <a class="nav-item nav-link" id="nav-exprofis-tab" data-toggle="tab" href="#nav-exprofis" role="tab" aria-controls="nav-exprofis" aria-selected="false">Experiência Profissional</a>
-                        <a class="nav-item nav-link" id="nav-deficiencia-tab" data-toggle="tab" href="#nav-deficiencia" role="tab" aria-controls="nav-deficiencia" aria-selected="false">Deficiência</a>
+                        <a class="nav-item nav-link active navbar-dark" style="background-color: #E0F2F1;" id="nav-formacadem-tab" data-toggle="tab" href="#nav-formacadem" role="tab" aria-controls="nav-formacadem" aria-selected="true">Formação Acadêmica</a>
+                        <a class="nav-item nav-link navbar-dark " style="background-color: #E0F2F1;" id="nav-exprofis-tab" data-toggle="tab" href="#nav-exprofis" role="tab" aria-controls="nav-exprofis" aria-selected="false">Experiência Profissional</a>
+                        <a class="nav-item nav-link navbar-dark " style="background-color: #E0F2F1;" id="nav-deficiencia-tab" data-toggle="tab" href="#nav-deficiencia" role="tab" aria-controls="nav-deficiencia" aria-selected="false">Deficiência</a>
 
                     </div>
                 </nav>
@@ -194,7 +194,7 @@
                     <!--                    
                         ABA FORMAÇÃO ACADÊMICA
                     -->
-                    <div class="tab-pane fade show active border" id="nav-formacadem" role="tabpanel" aria-labelledby="nav-formacadem-tab">
+                    <div class="tab-pane fade show active border border" id="nav-formacadem" role="tabpanel" aria-labelledby="nav-formacadem-tab">
                         
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item" src="FormacaoAcademica.jsp" ></iframe>
@@ -381,10 +381,10 @@
                     </div>
 
                     <!--                    
-                        ABA EXPERÊNCIA PROFISSIONAL
+                        ABA DEFICIÊNCIA
                     -->
 
-                    <div class="tab-pane fade border" id="nav-deficiencia" role="tabpanel" aria-labelledby="nav-deficiencia-tab">
+                    <div class="tab-pane fade border border" id="nav-deficiencia" role="tabpanel" aria-labelledby="nav-deficiencia-tab">
 
                         <div class="container">
                             <div class="form-check">

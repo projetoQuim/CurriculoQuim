@@ -8,11 +8,14 @@ package controller;
 import BD.Conexao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.FormacaoAcademica;
 import model.Teste;
 import model.Teste2;
 
@@ -32,30 +35,65 @@ public class cadTeste2 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
+    List<FormacaoAcademica> listaFormacao = new ArrayList<FormacaoAcademica>();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
-            Teste2 cada2 = new Teste2();
+            FormacaoAcademica formacao = new FormacaoAcademica();
 
-            cada2.setNumero(Integer.parseInt(request.getParameter("numero2")));
-            cada2.setCoisa(request.getParameter("nome2"));
-            cada2.setCor(request.getParameter("cor2"));
+            formacao.setCodigoCurriculo(Integer.parseInt(request.getParameter("codigoCurriculo")));
+            formacao.setEscolaridade(request.getParameter("escolaridade"));
+            formacao.setAreaFormacao(request.getParameter("areaFormacao"));
+            formacao.setInstituicaoEnsino(request.getParameter("instituicaoEnsino"));
+            formacao.setCurso(request.getParameter("curso"));
 
-            Conexao conecta = new Conexao();
-            conecta.cadTeste2(cada2);
-            
-            response.sendRedirect("teste2.jsp");
+            listaFormacao.add(formacao);
 
-            out.println("<!DOCTYPE html>");
+//            Conexao conecta = new Conexao();
+//            conecta.cadTeste2(cada2);
+
+out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet cadTeste2</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet cadTeste2 at " + request.getContextPath() + "</h1>");
+
+            int contador = listaFormacao.size();
+            for (int i = 0; i < contador; i++) {
+                out.println(listaFormacao.get(i).getCodigoCurriculo());
+                out.println(listaFormacao.get(i).getEscolaridade());
+                out.println(listaFormacao.get(i).getAreaFormacao());
+                out.println(listaFormacao.get(i).getInstituicaoEnsino());
+                out.println(listaFormacao.get(i).getCurso());
+            }
+            
+            request.setAttribute("listagem", listaFormacao);
+            response.sendRedirect("FormacaoAcademica.jsp");
+
+//            ArrayList<String> agenda = new ArrayList();
+//
+//            // [ B ] usando o método add() para gravar 4 contatos na agenda
+//            agenda.add("Juca Bala;11 1111-1111");
+//            agenda.add("Marcos Paqueta;22 2222-2222");
+//            agenda.add("Maria Antonieta;33 3333-3333");
+//            agenda.add("Antônio Conselheiro;44 4444-4444");
+//
+//            int i;
+//
+//            // [ C ] mostrando os "n" contatos da agenda (usando o índice)
+//            // número de elementos da agenda: método size()
+//            out.println("Percorrendo o ArrayList (usando o índice)\n");
+//            int n = agenda.size();
+//            for (i = 0; i < n; i++) {
+//                out.println("Posição %d- %s\n" + i + "" + agenda.get(i));
+//            }
             out.println("</body>");
             out.println("</html>");
         }
