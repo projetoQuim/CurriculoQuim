@@ -12,6 +12,9 @@
 <%@page import="controller.cadTeste2" %>
 <!DOCTYPE html>
 <html>
+    
+    <%ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagem");%>
+    
     <head>
         <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
 
@@ -27,65 +30,7 @@
         <!--        <title>JSP Page</title>-->
     </head>
     <body>
-        <!-- Botão para acionar modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFormacaoAcademica">
-            Adicionar
-        </button>
 
-        <!-- Modal -->
-        <div class="modal fade" id="modalFormacaoAcademica" tabindex="-1" role="dialog" aria-labelledby="modalFormacaoAcademicaLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalFormacaoAcademicaLabel">Formação Acadêmica</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="cadTeste2">
-                        <div class="modal-body">
-                            <div class="col col-md-2">
-                                <input type="text" class="form-control" id="codigoCurriculo" name="codigoCurriculo">
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col col-md-4">
-                                    <select id="escolaridade" name="escolaridade" class="form-control">
-                                        <option selected>Escolaridade..</option>
-                                        <option>Analfabeto</option>
-                                        <option>Fundamental completo</option>
-                                        <option>Fundamental incompleto</option>
-                                        <option>Médio completo</option>
-                                        <option>Médio incompleto</option>
-                                        <option>Superior completo</option>
-                                        <option>Superior incompleto</option>
-                                        <option>Curso Técnico completo</option>
-                                        <option>Curso Técnico incompleto</option>
-                                    </select>
-                                </div>
-                                <div class="col col-md-8">
-                                    <input type="text" class="form-control" id="areaFormacao" name="areaFormacao" placeholder="Área de formação">
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col col-6">
-                                    <input type="text" class="form-control" id="instituicaoEnsino" name="instituicaoEnsino" placeholder="Instituição de ensino">
-                                </div>
-                                <div class="col col-6">
-                                    <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-primary">Adiciona</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
         <table class="table table-hover border-top-0" id="tabelaFormacaoAcademica">
             <thead>
                 <tr>
@@ -97,28 +42,31 @@
                 </tr>
             </thead>
             <tbody>
-
                 <%
-                    FormacaoAcademica formacao = new FormacaoAcademica();
-                    List<FormacaoAcademica> lista = new ArrayList<FormacaoAcademica>();
-                    lista = (ArrayList) request.getAttribute("listagem");
+//                    ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagem");
+//                    listaFor = (ArrayList) request.getAttribute("listagem");
 
-                    if (lista.isEmpty()) {
-                        out.println("<h1>ESTÁ VAZIO AINDA</h1>");
-                    }else{
-                        int contador = lista.size();
-                        for (int i = 0; i < contador; i++) {
-                %>
+                    if (listaFor != null) {
+                        int contador = listaFor.size();
+                        for (int i = 0; i < contador; i++) {%>
                 <tr>
-                    <td><%=lista.get(i).getCodigoCurriculo()%></td>
-                    <td><%=lista.get(i).getEscolaridade()%></td>
-                    <td><%=lista.get(i).getAreaFormacao()%></td>
-                    <td><%=lista.get(i).getInstituicaoEnsino()%></td>
-                    <td><%=lista.get(i).getCurso()%></td>
-                </tr>
+                    <td><%listaFor.get(i).getCodigoCurriculo()%></td>
+                    <td><%=listaFor.get(i).getEscolaridade()%></td>
+                    <td><%=listaFor.get(i).getAreaFormacao()%></td>
+                    <td><%=listaFor.get(i).getInstituicaoEnsino()%></td>
+                    <td><%=listaFor.get(i).getCurso()%></td>
+                    <!--                        
+                                            out.println(listaFor.get(i).getCodigoCurriculo());
+                                            out.println(listaFor.get(i).getEscolaridade());
+                                            out.println(listaFor.get(i).getAreaFormacao());
+                                            out.println(listaFor.get(i).getInstituicaoEnsino());
+                                            out.println(listaFor.get(i).getCurso());-->
+                </tr>    
                 <%}
-                    }%>
-
+                    } else {
+                        out.println("Valor Nulo");
+                    }
+                %>
             </tbody>
         </table>
         <br>

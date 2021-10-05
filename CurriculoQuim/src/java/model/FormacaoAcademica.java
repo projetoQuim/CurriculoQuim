@@ -11,12 +11,12 @@ package model;
  */
 public class FormacaoAcademica {
 
-    private int idformacaoacademica;
-    private int codigoCurriculo;
-    private String Escolaridade;
-    private String AreaFormacao;
-    private String InstituicaoEnsino;
-    private String Curso;
+    private int idformacaoacademica=0;
+    private int codigoCurriculo=0;
+    private String Escolaridade="";
+    private String AreaFormacao="";
+    private String InstituicaoEnsino="";
+    private String Curso="";
 
     public int getIdformacaoacademica() {
         return idformacaoacademica;
@@ -68,6 +68,4 @@ public class FormacaoAcademica {
 
     public FormacaoAcademica() {
     }
-
-    
 }

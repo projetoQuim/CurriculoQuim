@@ -54,32 +54,19 @@ public class cadTeste2 extends HttpServlet {
 
             listaFormacao.add(formacao);
 
-//            Conexao conecta = new Conexao();
-//            conecta.cadTeste2(cada2);
 
-out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet cadTeste2</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet cadTeste2 at " + request.getContextPath() + "</h1>");
-
-            int contador = listaFormacao.size();
-            for (int i = 0; i < contador; i++) {
-                out.println(listaFormacao.get(i).getCodigoCurriculo());
-                out.println(listaFormacao.get(i).getEscolaridade());
-                out.println(listaFormacao.get(i).getAreaFormacao());
-                out.println(listaFormacao.get(i).getInstituicaoEnsino());
-                out.println(listaFormacao.get(i).getCurso());
-            }
+//            int contador = listaFormacao.size();
+//            for (int i = 0; i < contador; i++) {
+//                out.println(listaFormacao.get(i).getCodigoCurriculo());
+//                out.println(listaFormacao.get(i).getEscolaridade());
+//                out.println(listaFormacao.get(i).getAreaFormacao());
+//                out.println(listaFormacao.get(i).getInstituicaoEnsino());
+//                out.println(listaFormacao.get(i).getCurso());
+//            }
             
             request.setAttribute("listagem", listaFormacao);
             response.sendRedirect("FormacaoAcademica.jsp");
 
-
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

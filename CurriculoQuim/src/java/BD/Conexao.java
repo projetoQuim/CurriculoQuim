@@ -11,22 +11,14 @@ package BD;
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.Teste;
-import model.Teste2;
 
 public class Conexao {
 
-    public Connection conexao;
-    public PreparedStatement ps;
-    public ResultSet rs;
-    public Teste cad;
+    public Connection Conexao() {
 
-    public Conexao() {
+        Connection conexao = null;
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException cnfe) {
@@ -38,63 +30,7 @@ public class Conexao {
         } catch (SQLException sqle) {
             System.out.println("Classe Conexao - Erro ->" + sqle.getMessage());
         }
-    }
-
-    public void cadTeste(Teste teste) {
-        try {
-
-            ps = conexao.prepareStatement("INSERT INTO Colaborador(idColaborador,nome,cargo,situacao) VALUES(?,?,?,?)");
-
-            ps.setString(1, teste.getId());
-            ps.setString(2, teste.getNome());
-            ps.setString(3, teste.getCargo());
-            ps.setString(4, teste.getSituacao());
-
-            ps.executeUpdate();
-
-        } catch (SQLException | NullPointerException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void cadTeste2(Teste2 teste) {
-        try {
-
-            ps = conexao.prepareStatement("INSERT INTO teste(numero,coisa,cor) VALUES(?,?,?)");
-
-            ps.setString(1, Integer.toString(teste.getNumero()));
-            ps.setString(2, teste.getCoisa());
-            ps.setString(3, teste.getCor());
-            ps.executeUpdate();
-
-            ps.close();
-
-        } catch (SQLException | NullPointerException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public ResultSet lista2() {
-        try {
-            ps = conexao.prepareStatement("SELECT * FROM teste");
-            rs = ps.executeQuery();
-        } catch (SQLException ex) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-        return rs;
-    }
-
-    public void deletaTeste(int id) {
-        try {
-            ps = conexao.prepareStatement("delete from teste where numero=?");
-            ps.setInt(1, id);
-            ps.executeUpdate();
-            
-        } catch (SQLException sqle) {
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, sqle);
-
-        }
+        return conexao;
     }
 
 }

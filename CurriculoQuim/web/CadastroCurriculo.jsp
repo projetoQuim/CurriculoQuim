@@ -194,41 +194,24 @@
                     <!--                    
                         ABA FORMAÇÃO ACADÊMICA
                     -->
+
+
                     <div class="tab-pane fade show active border border" id="nav-formacadem" role="tabpanel" aria-labelledby="nav-formacadem-tab">
-                        
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="FormacaoAcademica.jsp" ></iframe>
-                        </div>
+                        <!-- Botão para acionar modal -->
+                        <br>
+                        <br>
 
                         <!--                        
-    
-<table class="table table-hover" id="tabelaFormacaoAcademica">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">Cód</th>
-                                    <th scope="col">Escolaridade</th>
-                                    <th scope="col">Área de formação</th>
-                                    <th scope="col">Instituição de ensino</th>
-                                    <th scope="col">Curso</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="hidden" name="codigoFromacao" value="1"> 1</td>
-                                    <td><input type="hidden" name="escolaridadeFormacao" value="Mark">Mark</td>
-                                    <td><input type="hidden" name="areaFormacao" value="Otto">Otto</td>
-                                    <td><input type="hidden" name="instituicaoFormacao" value="@mdo">@mdo</td>
-                                    <td><input type="hidden" name="cursoFormacao" value="@mdo">@mdo</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                         Botão para acionar modal 
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFormacaoAcademica">
+                                               
+                        FAZER O MODAL INICIAR COM O VALOR DO CÓDIGO DO CURRÍCULO                        
+                        TENTAR PASSAR O VALOR DO CAMPO "CÓDIGO" PARA O MODAL
+                        onclick="document.getElementById('ID-DESTINO').value=document.getElementById('ID-ORIGEM').value;"
+                        -->
+                        <button type="button" onclick="document.getElementById('codigoCurriculo').value = document.getElementById('codCurriculo').value;" id="btnModal" name="btnModal" class="btn btn-primary" data-toggle="modal" data-target="#modalFormacaoAcademica">
                             Adicionar
                         </button>
 
-                         Modal 
+                        <!-- Modal -->
                         <div class="modal fade" id="modalFormacaoAcademica" tabindex="-1" role="dialog" aria-labelledby="modalFormacaoAcademicaLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -238,52 +221,61 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="col col-md-2">
-                                            <input type="text" class="form-control" id="codigoFormacao">
+                                    <form name="formFormacao" value="formFormacao">
+                                        <div class="modal-body">
+                                            <div class="col col-md-2">
+                                                <!--READONLY PARA QUE NÃO SEJA ALTERADO-->
+                                                <input type="text" class="form-control" id="codigoCurriculo" name="codigoCurriculo" readonly>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col col-md-4">
+                                                    <select id="escolaridade" name="escolaridade" class="form-control">
+                                                        <option selected>Escolaridade..</option>
+                                                        <option>Analfabeto</option>
+                                                        <option>Fundamental completo</option>
+                                                        <option>Fundamental incompleto</option>
+                                                        <option>Médio completo</option>
+                                                        <option>Médio incompleto</option>
+                                                        <option>Superior completo</option>
+                                                        <option>Superior incompleto</option>
+                                                        <option>Curso Técnico completo</option>
+                                                        <option>Curso Técnico incompleto</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col col-md-8">
+                                                    <input type="text" class="form-control" id="areaFormacao" name="areaFormacao" placeholder="Área de formação">
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col col-6">
+                                                    <input type="text" class="form-control" id="instituicaoEnsino" name="instituicaoEnsino" placeholder="Instituição de ensino">
+                                                </div>
+                                                <div class="col col-6">
+                                                    <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col col-md-4">
-                                                <select id="escolaridade" class="form-control">
-                                                    <option selected>Escolaridade..</option>
-                                                    <option>Analfabeto</option>
-                                                    <option>Fundamental completo</option>
-                                                    <option>Fundamental incompleto</option>
-                                                    <option>Médio completo</option>
-                                                    <option>Médio incompleto</option>
-                                                    <option>Superior completo</option>
-                                                    <option>Superior incompleto</option>
-                                                    <option>Curso Técnico completo</option>
-                                                    <option>Curso Técnico incompleto</option>
-                                                </select>
-                                            </div>
-                                            <div class="col col-md-8">
-                                                <input type="text" class="form-control" id="areaFormacao" placeholder="Área de formação">
-                                            </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+                                            <!--USAR FORMACTION PARA CHAMAR A AÇÃO PORQUE SE USAR O ACTION DO FORMULÁRIO ELE SE PERDE QUAL BOTÃO CHAMAR...-->
+                                            <button type="submit" class="btn btn-primary" formaction="cadTeste2" >Adiciona</button>
                                         </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col col-6">
-                                                <input type="text" class="form-control" id="instituicaoEnsino" placeholder="Instituição de ensino">
-                                            </div>
-                                            <div class="col col-6">
-                                                <input type="text" class="form-control" id="curso" placeholder="Curso">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        <button type="button" onclick="adicionaLinhaFormacao('tabelaFormacaoAcademica')" class="btn btn-primary">Adiciona</button>
-                                    </div>
+                                    </form>
+
+
+
                                 </div>
                             </div>
+
                         </div>
-
-                        <button type="button" onclick="lerTabelaFormacaoAcademica('tabelaFormacaoAcademica')" class="btn btn-primary">Lista</button>
-
-                        <br>
-                        <br>-->
+<!--                        <div class="container-fluid mr-sm-2"> 
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="FormacaoAcademica.jsp" ></iframe>
+                            </div>
+                        </div>-->
 
                     </div>
 
@@ -292,11 +284,11 @@
                     -->
                     <div class="tab-pane fade border" id="nav-exprofis" role="tabpanel" aria-labelledby="nav-exprofis-tab">
 
-                        <div class="container-fluid mr-sm-2"> 
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="ExperienciaProfissional.jsp" ></iframe>
-                        </div>
-                        </div>
+                        <!--                        <div class="container-fluid mr-sm-2"> 
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe class="embed-responsive-item" src="ExperienciaProfissional.jsp" ></iframe>
+                                                </div>
+                                                </div>-->
                         <!--
                         <table class="table table-hover " id="tabelaExperienciaProfissional">
                             <thead class="thead-light">
@@ -442,8 +434,8 @@
                     </div>
 
                 </fieldset>
-
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <!--USAR FORMACTION PARA CHAMAR A AÇÃO PORQUE SE USAR O ACTION DO FORMULÁRIO ELE SE PERDE QUAL BOTÃO CHAMAR...-->
+                <button type="submit" formaction="CadastraCurriculo" class="btn btn-primary" name="btnSalvaCurriculo">Salvar</button>
 
                 <footer class="footer navbar-fixed-bottom">
                     <p >&copy; Tudo o que quiser colocar aqui</p>
@@ -454,6 +446,8 @@
         <script src="bootstrap-4.1.3/js/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
         <script src="bootstrap-4.1.3/js/popper.min.js" type="text/javascript"></script>
         <script src="bootstrap-4.1.3/js/bootstrap.min.js" type="text/javascript"></script>
+
+
 
     </body>
 </html>

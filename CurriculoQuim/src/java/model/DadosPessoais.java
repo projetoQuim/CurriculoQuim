@@ -233,7 +233,7 @@ public class DadosPessoais {
         this.Deficiente = Deficiente;
     }
 
-    public String getTipoDeficiência() {
+    public String getTipoDeficiencia() {
         return TipoDeficiência;
     }
 

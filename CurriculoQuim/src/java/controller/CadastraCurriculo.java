@@ -68,29 +68,32 @@ public class CadastraCurriculo extends HttpServlet {
             dadosPessoais.setDescricaoDeficiencia(request.getParameter("textDeficiencia"));
             dadosPessoais.setOutrasInformacoes(request.getParameter("textObs"));
 
+            AcoesDadosPessoais acoesdadospessoais = new AcoesDadosPessoais();
+            acoesdadospessoais.InsereDados(dadosPessoais);
+            
             /*
                 INFORMAÇÕES ACADÊMICAS
              */
-            FormacaoAcademica formacaoAcademica = new FormacaoAcademica();
-
-            formacaoAcademica.setCodigoCurriculo(Integer.parseInt(request.getParameter("")));
-            formacaoAcademica.setEscolaridade((request.getParameter("")));
-            formacaoAcademica.setAreaFormacao((request.getParameter("")));
-            formacaoAcademica.setInstituicaoEnsino((request.getParameter("")));
-            formacaoAcademica.setCurso((request.getParameter("")));
-
-            /*
-                INFORMAÇÕES PROFISSIONAIS
-             */
-            ExperienciaProfissional experienciaProfissional = new ExperienciaProfissional();
-
-            experienciaProfissional.setCodigoCurriculo(Integer.parseInt(request.getParameter("")));
-            experienciaProfissional.setNomeEmpresa((request.getParameter("")));
-            experienciaProfissional.setRamo((request.getParameter("")));
-            experienciaProfissional.setCargo((request.getParameter("")));
-            experienciaProfissional.setDataAdmissao((request.getParameter("")));
-            experienciaProfissional.setDataDemissao((request.getParameter("")));
-            
+//            FormacaoAcademica formacaoAcademica = new FormacaoAcademica();
+//
+//            formacaoAcademica.setCodigoCurriculo(Integer.parseInt(request.getParameter("")));
+//            formacaoAcademica.setEscolaridade((request.getParameter("")));
+//            formacaoAcademica.setAreaFormacao((request.getParameter("")));
+//            formacaoAcademica.setInstituicaoEnsino((request.getParameter("")));
+//            formacaoAcademica.setCurso((request.getParameter("")));
+//
+//            /*
+//                INFORMAÇÕES PROFISSIONAIS
+//             */
+//            ExperienciaProfissional experienciaProfissional = new ExperienciaProfissional();
+//
+//            experienciaProfissional.setCodigoCurriculo(Integer.parseInt(request.getParameter("")));
+//            experienciaProfissional.setNomeEmpresa((request.getParameter("")));
+//            experienciaProfissional.setRamo((request.getParameter("")));
+//            experienciaProfissional.setCargo((request.getParameter("")));
+//            experienciaProfissional.setDataAdmissao((request.getParameter("")));
+//            experienciaProfissional.setDataDemissao((request.getParameter("")));
+//            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -100,6 +103,11 @@ public class CadastraCurriculo extends HttpServlet {
 
             out.println("<div>");
             out.println("</div>");
+            
+                        out.println(dadosPessoais.getNome());
+            out.println(dadosPessoais.getCPF());
+            out.println(dadosPessoais.getCidade());
+
 
             out.println("<h1>Servlet CadastraCurriculo at " + request.getContextPath() + "</h1>");
             out.println("</body>");
