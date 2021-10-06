@@ -5,7 +5,6 @@
  */
 package controller;
 
-import BD.Conexao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,15 +16,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.FormacaoAcademica;
-import model.Teste;
-import model.Teste2;
 
 /**
  *
- * @author MarcosMG
+ * @author Administrador
  */
-@WebServlet(name = "cadTeste2", urlPatterns = {"/cadTeste2"})
-public class cadTeste2 extends HttpServlet {
+@WebServlet(name = "ListaFormacao", urlPatterns = {"/ListaFormacao"})
+public class ListaFormacao extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -63,11 +60,10 @@ public class cadTeste2 extends HttpServlet {
 //                out.println(listaFormacao.get(i).getCurso());
 //            }
 
-            request.setAttribute("listagem", listaFormacao);
+            request.setAttribute("listagemFormacao", listaFormacao);
 //          DÁ ERRADO  response.sendRedirect("FormacaoAcademica.jsp");
             RequestDispatcher rd = request.getRequestDispatcher("FormacaoAcademica.jsp");
             rd.forward(request, response);
-
         }
     }
 

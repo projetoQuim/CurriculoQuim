@@ -1,5 +1,12 @@
+<%-- 
+    Document   : testeCurriculo
+    Created on : 06/10/2021, 09:45:57
+    Author     : Administrador
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
     <head>
 
         <!-- Meta tags Obrigatórias -->
@@ -14,10 +21,16 @@
         <title>Currículo</title>
 
         <script>
+            //Acionar Botão 
+            document.getElementById("btnAdicionaFormacao").onclick = function () {
+                adicionaLinhaFormacao("tabelaFormacaoAcademica");
+            };
+
             //Funcao adiciona uma nova linha na tabela
+
             function adicionaLinhaFormacao(idTabela) {
 
-                var tabela = document.getElementById("tabelaFormacaoAcademica");
+                var tabela = document.getElementById(idTabela);
                 var numeroLinhas = tabela.rows.length;
                 var linha = tabela.insertRow(numeroLinhas);
                 var celula1 = linha.insertCell(0);
@@ -336,8 +349,8 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        <!--<button type="button" onclick="adicionaLinhaFormacao('tabelaFormacaoAcademica')" class="btn btn-primary">Adiciona</button>-->
-                                        <button type="button" id="btnAdicionaFormacao" class="btn btn-primary">Adiciona</button>
+                                        <button type="submit" onclick="adicionaLinhaFormacao('tabelaFormacaoAcademica')" formaction="cadTeste2" class="btn btn-primary">Adiciona</button>
+                                        <!--<button type="button" id="btnAdicionaFormacao" class="btn btn-primary">Adiciona</button>-->
                                     </div>
                                 </form>
                             </div>

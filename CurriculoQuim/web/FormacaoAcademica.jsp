@@ -12,9 +12,8 @@
 <%@page import="controller.cadTeste2" %>
 <!DOCTYPE html>
 <html>
-    
-    <%ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagem");%>
-    
+
+
     <head>
         <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
 
@@ -30,6 +29,71 @@
         <!--        <title>JSP Page</title>-->
     </head>
     <body>
+
+        <%ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagemFormacao");%>
+
+        <!-- Botão para acionar modal -->
+        <button type="button" onclick="document.getElementById('codigoCurriculo').value = document.getElementById('codCurriculo').value;" id="btnModal" name="btnModal" class="btn btn-primary" data-toggle="modal" data-target="#modalFormacaoAcademica">
+            Adicionar
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="modalFormacaoAcademica" tabindex="-1" role="dialog" aria-labelledby="modalFormacaoAcademicaLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalFormacaoAcademicaLabel">Formação Acadêmica</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form name="formFormacao">
+                        <div class="modal-body">
+                            <div class="col col-md-2">
+                                <!--READONLY PARA QUE NÃO SEJA ALTERADO-->
+                                <input type="text" class="form-control" id="codigoCurriculo" name="codigoCurriculo" >
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col col-md-4">
+                                    <select id="escolaridade" name="escolaridade" class="form-control">
+                                        <option selected>Escolaridade..</option>
+                                        <option>Analfabeto</option>
+                                        <option>Fundamental completo</option>
+                                        <option>Fundamental incompleto</option>
+                                        <option>Médio completo</option>
+                                        <option>Médio incompleto</option>
+                                        <option>Superior completo</option>
+                                        <option>Superior incompleto</option>
+                                        <option>Curso Técnico completo</option>
+                                        <option>Curso Técnico incompleto</option>
+                                    </select>
+                                </div>
+                                <div class="col col-md-8">
+                                    <input type="text" class="form-control" id="areaFormacao" name="areaFormacao" placeholder="Área de formação">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col col-6">
+                                    <input type="text" class="form-control" id="instituicaoEnsino" name="instituicaoEnsino" placeholder="Instituição de ensino">
+                                </div>
+                                <div class="col col-6">
+                                    <input type="text" class="form-control" id="curso" name="curso" placeholder="Curso">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+                            <!--USAR FORMACTION PARA CHAMAR A AÇÃO PORQUE SE USAR O ACTION DO FORMULÁRIO ELE SE PERDE QUAL BOTÃO CHAMAR...-->
+                            <button type="submit" class="btn btn-primary" formaction="ListaFormacao" >Adiciona</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
 
         <table class="table table-hover border-top-0" id="tabelaFormacaoAcademica">
             <thead>
@@ -50,7 +114,7 @@
                         int contador = listaFor.size();
                         for (int i = 0; i < contador; i++) {%>
                 <tr>
-                    <td><%listaFor.get(i).getCodigoCurriculo()%></td>
+                    <td><%=listaFor.get(i).getCodigoCurriculo()%></td>
                     <td><%=listaFor.get(i).getEscolaridade()%></td>
                     <td><%=listaFor.get(i).getAreaFormacao()%></td>
                     <td><%=listaFor.get(i).getInstituicaoEnsino()%></td>
@@ -61,14 +125,16 @@
                                             out.println(listaFor.get(i).getAreaFormacao());
                                             out.println(listaFor.get(i).getInstituicaoEnsino());
                                             out.println(listaFor.get(i).getCurso());-->
-                </tr>    
+                </tr>
                 <%}
                     } else {
-                        out.println("Valor Nulo");
+                        out.println("Nenhum registro");
                     }
                 %>
+
             </tbody>
         </table>
+
         <br>
         <br>
 

@@ -5,7 +5,6 @@
  */
 package controller;
 
-import BD.Conexao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,16 +15,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.ExperienciaProfissional;
 import model.FormacaoAcademica;
-import model.Teste;
-import model.Teste2;
 
 /**
  *
- * @author MarcosMG
+ * @author Administrador
  */
-@WebServlet(name = "cadTeste2", urlPatterns = {"/cadTeste2"})
-public class cadTeste2 extends HttpServlet {
+@WebServlet(name = "ListaExperiencia", urlPatterns = {"/ListaExperiencia"})
+public class ListaExperiencia extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,38 +34,29 @@ public class cadTeste2 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    List<FormacaoAcademica> listaFormacao = new ArrayList<FormacaoAcademica>();
+        List<ExperienciaProfissional> listaExperiencia = new ArrayList<ExperienciaProfissional>();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
-            FormacaoAcademica formacao = new FormacaoAcademica();
-
-            formacao.setCodigoCurriculo(Integer.parseInt(request.getParameter("codigoCurriculo")));
-            formacao.setEscolaridade(request.getParameter("escolaridade"));
-            formacao.setAreaFormacao(request.getParameter("areaFormacao"));
-            formacao.setInstituicaoEnsino(request.getParameter("instituicaoEnsino"));
-            formacao.setCurso(request.getParameter("curso"));
-
-            listaFormacao.add(formacao);
-//
-//            int contador = listaFormacao.size();
-//            for (int i = 0; i < contador; i++) {
-//                out.println(listaFormacao.get(i).getCodigoCurriculo());
-//                out.println(listaFormacao.get(i).getEscolaridade());
-//                out.println(listaFormacao.get(i).getAreaFormacao());
-//                out.println(listaFormacao.get(i).getInstituicaoEnsino());
-//                out.println(listaFormacao.get(i).getCurso());
-//            }
-
-            request.setAttribute("listagem", listaFormacao);
+            
+            ExperienciaProfissional experiencia = new ExperienciaProfissional();
+            
+            experiencia.setCodigoCurriculo(Integer.parseInt(request.getParameter("codigoCurriculo")));
+            experiencia.setNomeEmpresa(request.getParameter("empresaExperiencia"));
+            experiencia.setNomeEmpresa(request.getParameter("ramoExperiencia"));
+            experiencia.setNomeEmpresa(request.getParameter("cargoExperiencia"));
+            experiencia.setNomeEmpresa(request.getParameter("dataAdmissao"));
+            experiencia.setNomeEmpresa(request.getParameter("dataDemissao"));
+            
+            listaExperiencia.add(experiencia);
+            
+            request.setAttribute("listagemExperiencia", listaExperiencia);
 //          DÁ ERRADO  response.sendRedirect("FormacaoAcademica.jsp");
-            RequestDispatcher rd = request.getRequestDispatcher("FormacaoAcademica.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("ExperienciaProfissional.jsp");
             rd.forward(request, response);
-
         }
     }
 
