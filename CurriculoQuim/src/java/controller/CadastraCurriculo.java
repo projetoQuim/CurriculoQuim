@@ -7,6 +7,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.DadosPessoais;
-import model.ExperienciaProfissional;
 import model.FormacaoAcademica;
 
 /**
@@ -33,13 +34,17 @@ public class CadastraCurriculo extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
- /*
+            
+            FormacaoAcademica formacaoAcademica = new FormacaoAcademica();
+            ArrayList<FormacaoAcademica> listaFormacao = new ArrayList<FormacaoAcademica>();
+            listaFormacao = formacaoAcademica.getFormacao();
+            /*
             INFORMAÇÕES DOS DADOS PESSOAS
              */
             DadosPessoais dadosPessoais = new DadosPessoais();
@@ -70,10 +75,26 @@ public class CadastraCurriculo extends HttpServlet {
 
             AcoesDadosPessoais acoesdadospessoais = new AcoesDadosPessoais();
             acoesdadospessoais.InsereDados(dadosPessoais);
-            
+
             /*
                 INFORMAÇÕES ACADÊMICAS
              */
+            
+            if (listaFormacao.size()>0) {
+                int contador = listaFormacao.size();
+                for (int i = 0; i < contador; i++) {
+                    out.println(listaFormacao.get(i).getCodigoCurriculo());
+                    out.println(listaFormacao.get(i).getEscolaridade());
+                    out.println(listaFormacao.get(i).getAreaFormacao());
+                    out.println(listaFormacao.get(i).getInstituicaoEnsino());
+                    out.println(listaFormacao.get(i).getCurso());
+                }
+            } else {
+                out.println("zeradooooo");
+            }
+//            AcoesFormacaoAcademica acoesformacaoacademica = new AcoesFormacaoAcademica();
+//            acoesformacaoacademica.InsereFormacao(tico);
+
 //            FormacaoAcademica formacaoAcademica = new FormacaoAcademica();
 //
 //            formacaoAcademica.setCodigoCurriculo(Integer.parseInt(request.getParameter("")));
@@ -103,11 +124,11 @@ public class CadastraCurriculo extends HttpServlet {
 
             out.println("<div>");
             out.println("</div>");
-            
-                        out.println(dadosPessoais.getNome());
+
+            out.println(dadosPessoais.getNome());
             out.println(dadosPessoais.getCPF());
             out.println(dadosPessoais.getCidade());
-
+            
 
             out.println("<h1>Servlet CadastraCurriculo at " + request.getContextPath() + "</h1>");
             out.println("</body>");

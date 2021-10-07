@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Administrador
@@ -18,6 +20,8 @@ public class FormacaoAcademica {
     private String InstituicaoEnsino="";
     private String Curso="";
 
+    private ArrayList<FormacaoAcademica> formacao = new ArrayList<FormacaoAcademica>();
+    
     public int getIdformacaoacademica() {
         return idformacaoacademica;
     }
@@ -68,4 +72,14 @@ public class FormacaoAcademica {
 
     public FormacaoAcademica() {
     }
+
+    public ArrayList<FormacaoAcademica> getFormacao() {
+        return formacao;
+    }
+
+    public void setFormacao(ArrayList<FormacaoAcademica> formacao) {
+        this.formacao = formacao;
+    }
+    
+    
 }

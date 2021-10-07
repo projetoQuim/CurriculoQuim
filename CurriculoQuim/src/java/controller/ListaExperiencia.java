@@ -43,16 +43,32 @@ public class ListaExperiencia extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             ExperienciaProfissional experiencia = new ExperienciaProfissional();
+            QG expPro = new QG();
             
             experiencia.setCodigoCurriculo(Integer.parseInt(request.getParameter("codigoCurriculo")));
             experiencia.setNomeEmpresa(request.getParameter("empresaExperiencia"));
-            experiencia.setNomeEmpresa(request.getParameter("ramoExperiencia"));
-            experiencia.setNomeEmpresa(request.getParameter("cargoExperiencia"));
-            experiencia.setNomeEmpresa(request.getParameter("dataAdmissao"));
-            experiencia.setNomeEmpresa(request.getParameter("dataDemissao"));
+            experiencia.setRamo(request.getParameter("ramoExperiencia"));
+            experiencia.setCargo(request.getParameter("cargoExperiencia"));
+            experiencia.setDataAdmissao(request.getParameter("dataAdmissao"));
+            experiencia.setDataDemissao(request.getParameter("dataDemissao"));
+            
+            
             
             listaExperiencia.add(experiencia);
-            
+//            
+//            int contador = listaExperiencia.size();
+//            
+//            for (int i=0;i<contador;i++){
+//                out.println(listaExperiencia.get(i).getCodigoCurriculo());
+//                out.println(listaExperiencia.get(i).getNomeEmpresa());
+//                out.println(listaExperiencia.get(i).getRamo());
+//                out.println(listaExperiencia.get(i).getCargo());
+//                out.println(listaExperiencia.get(i).getDataAdmissao());
+//                out.println(listaExperiencia.get(i).getDataDemissao());
+//            }
+//     
+            expPro.Experiencia((ArrayList<ExperienciaProfissional>) listaExperiencia);
+
             request.setAttribute("listagemExperiencia", listaExperiencia);
 //          DÁ ERRADO  response.sendRedirect("FormacaoAcademica.jsp");
             RequestDispatcher rd = request.getRequestDispatcher("ExperienciaProfissional.jsp");

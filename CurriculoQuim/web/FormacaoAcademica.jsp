@@ -9,7 +9,6 @@
 <%@page import="model.FormacaoAcademica"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%@page import="controller.cadTeste2" %>
 <!DOCTYPE html>
 <html>
 
@@ -29,11 +28,15 @@
         <!--        <title>JSP Page</title>-->
     </head>
     <body>
+        <h2>Formação Acadêmica</h2>
 
-        <%ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagemFormacao");%>
+        <%
+            ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagemFormacao");
+        %>
+        
 
         <!-- Botão para acionar modal -->
-        <button type="button" onclick="document.getElementById('codigoCurriculo').value = document.getElementById('codCurriculo').value;" id="btnModal" name="btnModal" class="btn btn-primary" data-toggle="modal" data-target="#modalFormacaoAcademica">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFormacaoAcademica">
             Adicionar
         </button>
         <!-- Modal -->
@@ -89,6 +92,7 @@
                             <button type="submit" class="btn btn-primary" formaction="ListaFormacao" >Adiciona</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -107,9 +111,6 @@
             </thead>
             <tbody>
                 <%
-//                    ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagem");
-//                    listaFor = (ArrayList) request.getAttribute("listagem");
-
                     if (listaFor != null) {
                         int contador = listaFor.size();
                         for (int i = 0; i < contador; i++) {%>
@@ -119,25 +120,15 @@
                     <td><%=listaFor.get(i).getAreaFormacao()%></td>
                     <td><%=listaFor.get(i).getInstituicaoEnsino()%></td>
                     <td><%=listaFor.get(i).getCurso()%></td>
-                    <!--                        
-                                            out.println(listaFor.get(i).getCodigoCurriculo());
-                                            out.println(listaFor.get(i).getEscolaridade());
-                                            out.println(listaFor.get(i).getAreaFormacao());
-                                            out.println(listaFor.get(i).getInstituicaoEnsino());
-                                            out.println(listaFor.get(i).getCurso());-->
                 </tr>
                 <%}
                     } else {
                         out.println("Nenhum registro");
                     }
                 %>
-
             </tbody>
         </table>
-
-        <br>
-        <br>
-
+        
         <script src="bootstrap-4.1.3/js/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
         <script src="bootstrap-4.1.3/js/popper.min.js" type="text/javascript"></script>
         <script src="bootstrap-4.1.3/js/bootstrap.min.js" type="text/javascript"></script>

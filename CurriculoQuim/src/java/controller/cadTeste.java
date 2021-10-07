@@ -7,14 +7,13 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import model.Teste;
-import BD.Conexao;
+import model.FormacaoAcademica;
 
 /**
  *
@@ -31,34 +30,24 @@ public class cadTeste extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     */    
-    
+     */
+    ArrayList<FormacaoAcademica> listaFormacao = new ArrayList<FormacaoAcademica>();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            Teste cada = new Teste();
-            
-            cada.setId(request.getParameter("idColaborador"));
-            cada.setNome(request.getParameter("nomeColaborador"));
-            cada.setCargo(request.getParameter("cargoColaborador"));
-            cada.setSituacao(request.getParameter("situacaoColaborador"));
-            
-            Conexao conecta=new Conexao();
-            conecta.cadTeste(cada);
-            
-            response.sendRedirect("teste.jsp");
-            
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet cadTeste</title>");            
+            out.println("<title>Servlet cadTeste</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println();
+
             out.println("<h1>Servlet cadTeste at " + request.getContextPath() + "</h1>");
+            out.println("<h1>" + listaFormacao.size() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -91,9 +80,7 @@ public class cadTeste extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    
-        
-    
+
     }
 
     /**

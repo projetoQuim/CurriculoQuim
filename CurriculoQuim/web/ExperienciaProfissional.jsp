@@ -9,10 +9,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    
-    <%ArrayList<ExperienciaProfissional> listaExp = (ArrayList<ExperienciaProfissional>) request.getAttribute("listagemExperiencia");%>
 
-    
+
     <head>
         <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
 
@@ -28,6 +26,10 @@
         <!--        <title>JSP Page</title>-->
     </head>
     <body>
+        <h2>Experiência Profissional</h2>
+        
+        <%ArrayList<ExperienciaProfissional> listaExp = (ArrayList<ExperienciaProfissional>) request.getAttribute("listagemExperiencia");%>
+
         <!--Botão para acionar modal--> 
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExperiênciaProfissional">
             Adicionar
@@ -46,29 +48,29 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col col-md-2">
-                                    <input type="text" class="form-control" id="codigoCurriculo" placeholder="Código">
+                                    <input type="text" class="form-control" id="codigoCurriculo" name="codigoCurriculo" placeholder="Código">
                                 </div>
                                 <div class="col col-md-8">
-                                    <input type="text" class="form-control" id="empresaExperiencia" placeholder="Empresa">
+                                    <input type="text" class="form-control" id="empresaExperiencia" name="empresaExperiencia"  placeholder="Empresa">
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col col-6">
-                                    <input type="text" class="form-control" id="ramoExperiencia" placeholder="Ramo da empresa">
+                                    <input type="text" class="form-control" id="ramoExperiencia" name="ramoExperiencia" placeholder="Ramo da empresa">
                                 </div>
                                 <div class="col col-6">
-                                    <input type="text" class="form-control" id="cargoExperiencia" placeholder="Cargo na empresa">
+                                    <input type="text" class="form-control" id="cargoExperiencia" name="cargoExperiencia" placeholder="Cargo na empresa">
                                 </div>
                             </div>
                             <br>
 
                             <div class="row">
                                 <div class="col col-6">
-                                    <input type="date" class="form-control" id="dataAdmissao" placeholder="Ramo da empresa">
+                                    <input type="date" class="form-control" id="dataAdmissao" name="dataAdmissao" placeholder="Ramo da empresa">
                                 </div>
                                 <div class="col col-6">
-                                    <input type="date" class="form-control" id="dataDemissao" placeholder="Cargo na empresa">
+                                    <input type="date" class="form-control" id="dataDemissao" name="dataDemissao" placeholder="Cargo na empresa">
                                 </div>
                             </div>
                         </div>
@@ -76,7 +78,7 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 
                             <!--USAR FORMACTION PARA CHAMAR A AÇÃO PORQUE SE USAR O ACTION DO FORMULÁRIO ELE SE PERDE QUAL BOTÃO CHAMAR...-->
-                            <button type="submit" formaction="" class="btn btn-primary">Adiciona</button>
+                            <button type="submit" formaction="ListaExperiencia" class="btn btn-primary">Adiciona</button>
                         </div>
                     </form>
                 </div>
@@ -98,28 +100,24 @@
             </thead>
             <tbody>
                 <%
-                    if(listaExp!=null){
+                    if (listaExp != null) {
                         int contador = listaExp.size();
-                        for(int i=0; i<contador;i++){%>
-                        <tr>
-                            <td><%=listaExp.get(i).getCodigoCurriculo()%></td>
-                            <td><%=listaExp.get(i).getNomeEmpresa()%></td>
-                            <td><%=listaExp.get(i).getRamo()%></td>
-                            <td><%=listaExp.get(i).getCargo()%></td>
-                            <td><%=listaExp.get(i).getDataAdmissao()%></td>
-                            <td><%=listaExp.get(i).getDataDemissao()%></td>
-                        </tr>
-                         <%}
+                        for (int i = 0; i < contador; i++) {%>
+                <tr>
+                    <td><%=listaExp.get(i).getCodigoCurriculo()%></td>
+                    <td><%=listaExp.get(i).getNomeEmpresa()%></td>
+                    <td><%=listaExp.get(i).getRamo()%></td>
+                    <td><%=listaExp.get(i).getCargo()%></td>
+                    <td><%=listaExp.get(i).getDataAdmissao()%></td>
+                    <td><%=listaExp.get(i).getDataDemissao()%></td>
+                </tr>
+                <%}
                     } else {
                         out.println("Nenhum registro");
                     }
                 %>
-                               
             </tbody>
         </table>
-
-        <br>
-        <br>
 
         <script src="bootstrap-4.1.3/js/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
         <script src="bootstrap-4.1.3/js/popper.min.js" type="text/javascript"></script>
