@@ -4,9 +4,13 @@
     Author     : Administrador
 --%>
 
+<%@page import="controller.AcoesFormacaoAcademica"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="model.FormacaoAcademica"%>
+
+<%@page import="controller.cadTeste2" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -25,15 +29,19 @@
         <link rel="stylesheet" href="bootstrap-4.1.3/css/bootstrap.css" type="text/css">
         <link href="estilo.css" rel="stylesheet" type="text/css"/>
 
+        <%
+            ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagemFormacao");
+            FormacaoAcademica formacaoAcademica = new FormacaoAcademica();
+
+//            formacaoAcademica.setFormacao((ArrayList<FormacaoAcademica>) request.getAttribute("listagemFormacao"));
+            AcoesFormacaoAcademica acoesFormacao = new AcoesFormacaoAcademica();
+        %>
+
+
         <!--        <title>JSP Page</title>-->
     </head>
     <body>
         <h2>Formação Acadêmica</h2>
-
-        <%
-            ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagemFormacao");
-        %>
-        
 
         <!-- Botão para acionar modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalFormacaoAcademica">
@@ -91,6 +99,7 @@
                             <!--USAR FORMACTION PARA CHAMAR A AÇÃO PORQUE SE USAR O ACTION DO FORMULÁRIO ELE SE PERDE QUAL BOTÃO CHAMAR...-->
                             <button type="submit" class="btn btn-primary" formaction="ListaFormacao" >Adiciona</button>
                         </div>
+
                     </form>
 
                 </div>
@@ -128,7 +137,25 @@
                 %>
             </tbody>
         </table>
-        
+        <%
+            if (listaFor != null) {
+                out.println(listaFor.size());
+                request.setAttribute("lista", listaFor);
+                RequestDispatcher rd = request.getRequestDispatcher("cadTeste2");
+                rd.include(request, response);
+//               TANTO FAZ, PELO JEITO rd.forward(request, response);
+// REFERÊNCIA .: https://www.guj.com.br/t/como-passar-um-objeto-de-jsp-para-servlet/133802/10
+
+            } else {
+                out.println("Zerando ainda");
+            }
+
+//          ASSIM NÃO FUNCIONA****response.sendRedirect("FormacaoAcademica.jsp");
+%>
+        <!--        <form>
+                    <button type="submit" formaction="cadTeste2">Teste</button>
+                </form>-->
+
         <script src="bootstrap-4.1.3/js/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
         <script src="bootstrap-4.1.3/js/popper.min.js" type="text/javascript"></script>
         <script src="bootstrap-4.1.3/js/bootstrap.min.js" type="text/javascript"></script>

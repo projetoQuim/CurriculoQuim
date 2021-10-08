@@ -36,37 +36,27 @@ public class cadTeste2 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    List<FormacaoAcademica> listaFormacao = new ArrayList<FormacaoAcademica>();
-
+    
+     AcoesFormacaoAcademica acoes = new AcoesFormacaoAcademica();
+            
+            
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+    ArrayList<FormacaoAcademica> forma = (ArrayList<FormacaoAcademica>) request.getAttribute("lista");
 
-            FormacaoAcademica formacao = new FormacaoAcademica();
-
-            formacao.setCodigoCurriculo(Integer.parseInt(request.getParameter("codigoCurriculo")));
-            formacao.setEscolaridade(request.getParameter("escolaridade"));
-            formacao.setAreaFormacao(request.getParameter("areaFormacao"));
-            formacao.setInstituicaoEnsino(request.getParameter("instituicaoEnsino"));
-            formacao.setCurso(request.getParameter("curso"));
-
-            listaFormacao.add(formacao);
-//
-//            int contador = listaFormacao.size();
-//            for (int i = 0; i < contador; i++) {
-//                out.println(listaFormacao.get(i).getCodigoCurriculo());
-//                out.println(listaFormacao.get(i).getEscolaridade());
-//                out.println(listaFormacao.get(i).getAreaFormacao());
-//                out.println(listaFormacao.get(i).getInstituicaoEnsino());
-//                out.println(listaFormacao.get(i).getCurso());
-//            }
-
-            request.setAttribute("listagem", listaFormacao);
-//          DÁ ERRADO  response.sendRedirect("FormacaoAcademica.jsp");
-            RequestDispatcher rd = request.getRequestDispatcher("FormacaoAcademica.jsp");
-            rd.forward(request, response);
+//            forma= request.getAttribute("lista");
+           
+           
+            if (forma!=null ) { 
+                
+                acoes.InsereFormacao(forma);
+                out.println("Passou pela inserção..");
+            }else{
+            out.println("Z E R A D O O O SABOSTA...");
+            }
 
         }
     }

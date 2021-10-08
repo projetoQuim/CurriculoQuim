@@ -33,9 +33,8 @@ public class ListaFormacao extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    List<FormacaoAcademica> listaFormacao = new ArrayList<FormacaoAcademica>();
+    ArrayList<FormacaoAcademica> listaFormacao = new ArrayList<FormacaoAcademica>();
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -53,22 +52,22 @@ public class ListaFormacao extends HttpServlet {
             listaFormacao.add(formacao);
 //
 //            
-            formacao.setFormacao((ArrayList<FormacaoAcademica>) listaFormacao);
-            
-            int contador = formacao.getFormacao().size();
-            for (int i = 0; i < contador; i++) {
-                out.println(listaFormacao.get(i).getCodigoCurriculo());
-                out.println(listaFormacao.get(i).getEscolaridade());
-                out.println(listaFormacao.get(i).getAreaFormacao());
-                out.println(listaFormacao.get(i).getInstituicaoEnsino());
-                out.println(listaFormacao.get(i).getCurso());
-            }
-            
+//            formacao.setFormacao((ArrayList<FormacaoAcademica>) listaFormacao);
+//            
+//            int contador = formacao.getFormacao().size();
+//            for (int i = 0; i < contador; i++) {
+//                out.println(listaFormacao.get(i).getCodigoCurriculo());
+//                out.println(listaFormacao.get(i).getEscolaridade());
+//                out.println(listaFormacao.get(i).getAreaFormacao());
+//                out.println(listaFormacao.get(i).getInstituicaoEnsino());
+//                out.println(listaFormacao.get(i).getCurso());
+//            }
+//            
             request.setAttribute("listagemFormacao", listaFormacao);
-//          response.sendRedirect("FormacaoAcademica.jsp");
             RequestDispatcher rd = request.getRequestDispatcher("FormacaoAcademica.jsp");
             rd.forward(request, response);
-            
+            // ASSIM NÃO FUNCIONA****response.sendRedirect("FormacaoAcademica.jsp");
+
 //            AcoesFormacaoAcademica acFor = new AcoesFormacaoAcademica();
 //            
 //            acFor.InsereFormacao(formaAcad.formacaoacad);

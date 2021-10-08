@@ -42,8 +42,21 @@ public class CadastraCurriculo extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             FormacaoAcademica formacaoAcademica = new FormacaoAcademica();
-            ArrayList<FormacaoAcademica> listaFormacao = new ArrayList<FormacaoAcademica>();
-            listaFormacao = formacaoAcademica.getFormacao();
+            ArrayList<FormacaoAcademica> listaFormacao = formacaoAcademica.getFormacao();
+            
+            if (listaFormacao.size()>0) {
+                int contador = listaFormacao.size();
+                for (int i = 0; i < contador; i++) {
+                    out.println(listaFormacao.get(i).getCodigoCurriculo());
+                    out.println(listaFormacao.get(i).getEscolaridade());
+                    out.println(listaFormacao.get(i).getAreaFormacao());
+                    out.println(listaFormacao.get(i).getInstituicaoEnsino());
+                    out.println(listaFormacao.get(i).getCurso());
+                }
+            } else {
+                out.println("zeradooooo");
+            }
+            
             /*
             INFORMAÇÕES DOS DADOS PESSOAS
              */
@@ -80,18 +93,18 @@ public class CadastraCurriculo extends HttpServlet {
                 INFORMAÇÕES ACADÊMICAS
              */
             
-            if (listaFormacao.size()>0) {
-                int contador = listaFormacao.size();
-                for (int i = 0; i < contador; i++) {
-                    out.println(listaFormacao.get(i).getCodigoCurriculo());
-                    out.println(listaFormacao.get(i).getEscolaridade());
-                    out.println(listaFormacao.get(i).getAreaFormacao());
-                    out.println(listaFormacao.get(i).getInstituicaoEnsino());
-                    out.println(listaFormacao.get(i).getCurso());
-                }
-            } else {
-                out.println("zeradooooo");
-            }
+//            if (listaFormacao.size()>0) {
+//                int contador = listaFormacao.size();
+//                for (int i = 0; i < contador; i++) {
+//                    out.println(listaFormacao.get(i).getCodigoCurriculo());
+//                    out.println(listaFormacao.get(i).getEscolaridade());
+//                    out.println(listaFormacao.get(i).getAreaFormacao());
+//                    out.println(listaFormacao.get(i).getInstituicaoEnsino());
+//                    out.println(listaFormacao.get(i).getCurso());
+//                }
+//            } else {
+//                out.println("zeradooooo");
+//            }
 //            AcoesFormacaoAcademica acoesformacaoacademica = new AcoesFormacaoAcademica();
 //            acoesformacaoacademica.InsereFormacao(tico);
 
