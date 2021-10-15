@@ -141,9 +141,9 @@
             if (listaFor != null) {
                 out.println(listaFor.size());
                 request.setAttribute("lista", listaFor);
-                RequestDispatcher rd = request.getRequestDispatcher("cadTeste2");
+                RequestDispatcher rd = request.getRequestDispatcher("cadTeste2?acao=nao");
                 rd.include(request, response);
-//               TANTO FAZ, PELO JEITO rd.forward(request, response);
+//               VER AS DIFERENÇAS DEPOIS rd.forward(request, response);
 // REFERÊNCIA .: https://www.guj.com.br/t/como-passar-um-objeto-de-jsp-para-servlet/133802/10
 
             } else {

@@ -54,6 +54,7 @@ public class cadTeste2 extends HttpServlet {
                 
                 acoes.InsereFormacao(forma);
                 out.println("Passou pela inserção..");
+                out.println(request.getParameter("acao"));
             }else{
             out.println("Z E R A D O O O SABOSTA...");
             }
