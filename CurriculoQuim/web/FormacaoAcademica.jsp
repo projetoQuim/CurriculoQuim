@@ -30,11 +30,8 @@
         <link href="estilo.css" rel="stylesheet" type="text/css"/>
 
         <%
-            ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagemFormacao");
             FormacaoAcademica formacaoAcademica = new FormacaoAcademica();
-
-//            formacaoAcademica.setFormacao((ArrayList<FormacaoAcademica>) request.getAttribute("listagemFormacao"));
-            AcoesFormacaoAcademica acoesFormacao = new AcoesFormacaoAcademica();
+            ArrayList<FormacaoAcademica> listaFor = (ArrayList<FormacaoAcademica>) request.getAttribute("listagemFormacao");
         %>
 
 
@@ -138,23 +135,16 @@
             </tbody>
         </table>
         <%
-            if (listaFor != null) {
-                out.println(listaFor.size());
-                request.setAttribute("lista", listaFor);
-                RequestDispatcher rd = request.getRequestDispatcher("cadTeste2?acao=nao");
-                rd.include(request, response);
-//               VER AS DIFERENÇAS DEPOIS rd.forward(request, response);
-// REFERÊNCIA .: https://www.guj.com.br/t/como-passar-um-objeto-de-jsp-para-servlet/133802/10
+            request.setAttribute("lista", listaFor);
+//            RequestDispatcher rd = request.getRequestDispatcher("teste.jsp?fazer=vainao");
+            RequestDispatcher rd = request.getRequestDispatcher("teste.jsp");
+            //rd.forward(request, response);
+            rd.include(request, response);
 
-            } else {
-                out.println("Zerando ainda");
-            }
-
-//          ASSIM NÃO FUNCIONA****response.sendRedirect("FormacaoAcademica.jsp");
+            // REFERÊNCIA .: https://www.guj.com.br/t/como-passar-um-objeto-de-jsp-para-servlet/133802/10
+           
 %>
-        <!--        <form>
-                    <button type="submit" formaction="cadTeste2">Teste</button>
-                </form>-->
+        <a href="teste.jsp?fazer=vai"> Lista</a>
 
         <script src="bootstrap-4.1.3/js/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
         <script src="bootstrap-4.1.3/js/popper.min.js" type="text/javascript"></script>

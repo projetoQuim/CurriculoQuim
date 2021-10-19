@@ -49,12 +49,16 @@ public class cadTeste2 extends HttpServlet {
 
 //            forma= request.getAttribute("lista");
            
-           
+           String fazer = request.getParameter("acao");
+
             if (forma!=null ) { 
+                if (fazer.equalsIgnoreCase("cadastra")){
+                    acoes.InsereFormacao(forma);
+                    out.println("Passou pela inserção..");
+                }else{
+                    response.sendRedirect("FormacaoAcademica.jsp");
+                }
                 
-                acoes.InsereFormacao(forma);
-                out.println("Passou pela inserção..");
-                out.println(request.getParameter("acao"));
             }else{
             out.println("Z E R A D O O O SABOSTA...");
             }

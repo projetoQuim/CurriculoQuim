@@ -50,28 +50,12 @@ public class ListaFormacao extends HttpServlet {
             formacao.setCurso(request.getParameter("curso"));
 
             listaFormacao.add(formacao);
-//
-//            
-//            formacao.setFormacao((ArrayList<FormacaoAcademica>) listaFormacao);
-//            
-//            int contador = formacao.getFormacao().size();
-//            for (int i = 0; i < contador; i++) {
-//                out.println(listaFormacao.get(i).getCodigoCurriculo());
-//                out.println(listaFormacao.get(i).getEscolaridade());
-//                out.println(listaFormacao.get(i).getAreaFormacao());
-//                out.println(listaFormacao.get(i).getInstituicaoEnsino());
-//                out.println(listaFormacao.get(i).getCurso());
-//            }
-//            
+            formacao.setFormacao(listaFormacao);
+
             request.setAttribute("listagemFormacao", listaFormacao);
             RequestDispatcher rd = request.getRequestDispatcher("FormacaoAcademica.jsp");
             rd.forward(request, response);
             // ASSIM NÃO FUNCIONA****response.sendRedirect("FormacaoAcademica.jsp");
-
-//            AcoesFormacaoAcademica acFor = new AcoesFormacaoAcademica();
-//            
-//            acFor.InsereFormacao(formaAcad.formacaoacad);
-//            out.println("foiiii..");
         }
     }
 

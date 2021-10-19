@@ -4,31 +4,44 @@
     Author     : MarcosMG
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.FormacaoAcademica"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <%
+            FormacaoAcademica formAcad = new FormacaoAcademica();
+            ArrayList<FormacaoAcademica> resultado = new ArrayList<FormacaoAcademica>();
+        %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="cadTeste">
-            <input type="text" id="idColaborador"  name="idColaborador" placeholder="ID">
-            <input type="text" id="nomeColaborador"  name="nomeColaborador" placeholder="Nome">
-            <br>
-            <input type="text" id="cargoColaborador"  name="cargoColaborador" placeholder="Cargo">
-            <input type="text" id="situacaoColaborador"  name="situacaoColaborador" placeholder="Situação">
-            <br>
-            <br>
-            <br>
-            <br>
-            <iframe src="teste2.jsp" height="200" width="400" title="Iframe Example">
+         <%
+            resultado = (ArrayList<FormacaoAcademica>) request.getAttribute("lista");
+            out.println("Olá - - >"+resultado.size());
 
-            </iframe>
+            //resultado = formAcad.getFormacao();
+            if (resultado != null) {
+                if (resultado.size() == 0) {
+                    out.println("Zeraddooo...");
+                }
+                int contador = resultado.size();
+                for (int i = 0; i < contador; i++) {
+                    formAcad = resultado.get(i);
 
-            <button type="submit">Salvar</button>
+                    out.println(formAcad.getCodigoCurriculo());
+                    out.println(formAcad.getEscolaridade());
+                    out.println(formAcad.getAreaFormacao());
+                    out.println(formAcad.getInstituicaoEnsino());
+                    out.println(formAcad.getCurso());
+                }
+            } else {
+                out.println("Nulo ainda...");
+            }
+             //}
+        %>
 
-        </form>
     </body>
 </html>
